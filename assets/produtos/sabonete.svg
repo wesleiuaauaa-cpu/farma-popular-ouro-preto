@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de um sabonete">
+  <ellipse cx="120" cy="164" rx="72" ry="10" fill="#c8102e" opacity=".10"/>
+  <g transform="rotate(-8 120 108)">
+    <rect x="56" y="64" width="128" height="88" rx="26" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+    <rect x="64" y="72" width="112" height="72" rx="22" fill="#ffe9ec"/>
+    <rect x="86" y="94" width="68" height="28" rx="8" fill="#c8102e"/>
+    <text x="120" y="112" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle">SABONETE</text>
+    <circle cx="78" cy="84" r="4" fill="#ffc20e"/>
+    <circle cx="162" cy="132" r="4" fill="#ffc20e"/>
+  </g>
+</svg>

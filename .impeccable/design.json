@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T18:30:00Z",
+  "title": "Design System: Farma Popular Ouro Preto",
+  "extensions": {
+    "colorMeta": {
+      "primary": { "role": "primary", "displayName": "Vermelho Farma", "canonical": "#c8102e" },
+      "primary-deep": { "role": "primary", "displayName": "Vermelho Profundo", "canonical": "#a50b1f" },
+      "primary-dark": { "role": "primary", "displayName": "Vermelho Vinho", "canonical": "#8e0a18" },
+      "accent": { "role": "secondary", "displayName": "Amarelo Farma", "canonical": "#ffc20e" },
+      "accent-soft": { "role": "secondary", "displayName": "Amarelo Claro", "canonical": "#ffe083" },
+      "whatsapp": { "role": "tertiary", "displayName": "Verde Conversa", "canonical": "#0f7a3a" },
+      "whatsapp-hover": { "role": "tertiary", "displayName": "Verde Conversa Hover", "canonical": "#0d6b33" },
+      "ink": { "role": "neutral", "displayName": "Tinta Quente", "canonical": "#2b1a1a" },
+      "paper": { "role": "neutral", "displayName": "Papel", "canonical": "#ffffff" },
+      "muted": { "role": "neutral", "displayName": "Tinta Suave", "canonical": "#6f6161" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Assinatura Ouro Preto, apenas nela." },
+      "headline": { "displayName": "Headline", "purpose": "H1 de páginas e hero da home." },
+      "title": { "displayName": "Title", "purpose": "Títulos de cards e seções." },
+      "body": { "displayName": "Body", "purpose": "Texto corrido e descrições." },
+      "label": { "displayName": "Label", "purpose": "Badges e metadados." }
+    },
+    "shadows": [
+      { "name": "card", "value": "0 4px 16px rgba(80,0,10,0.10)", "purpose": "Repouso dos cards." },
+      { "name": "card-hover", "value": "0 16px 30px rgba(120,0,16,0.18)", "purpose": "Elevação em hover." },
+      { "name": "search", "value": "0 12px 32px rgba(120,0,16,0.16)", "purpose": "Destaque da busca." },
+      { "name": "floating", "value": "0 6px 20px rgba(15,107,51,0.5)", "purpose": "Botão flutuante do WhatsApp." }
+    ],
+    "motion": [
+      { "name": "lift", "value": "transform .2s, box-shadow .2s", "purpose": "Transição padrão de botões e cards." },
+      { "name": "ease-rise", "value": "opacity/transform .8s ease both", "purpose": "Entrada do conteúdo do cabeçalho." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "480px" },
+      { "name": "md", "value": "560px" },
+      { "name": "lg", "value": "820px" },
+      { "name": "xl", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação principal em fundo vermelho.",
+      "html": "<button class=\"ds-btn-primary\">Confira as ofertas</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 26px;border:0;border-radius:30px;background:#c8102e;color:#fff;font:700 15px Poppins,Arial,sans-serif;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}.ds-btn-primary:hover{background:#a50b1f;transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.22)}.ds-btn-primary:focus-visible{outline:3px solid #ffc20e;outline-offset:2px}"
+    },
+    {
+      "name": "WhatsApp Button",
+      "kind": "button",
+      "refersTo": "button-whatsapp",
+      "description": "Consulta de pedido pelo WhatsApp, com contraste AA.",
+      "html": "<button class=\"ds-btn-wa\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2a10 10 0 00-8.4 15.2L2 22l4.9-1.3A10 10 0 1012 2z\"/></svg> Consultar pelo WhatsApp</button>",
+      "css": ".ds-btn-wa{display:inline-flex;align-items:center;gap:9px;min-height:48px;padding:14px 26px;border:0;border-radius:30px;background:#0f7a3a;color:#fff;font:700 15px Poppins,Arial,sans-serif;cursor:pointer;transition:background .2s,transform .2s}.ds-btn-wa svg{flex:none}.ds-btn-wa:hover{background:#0d6b33;transform:translateY(-2px)}.ds-btn-wa:focus-visible{outline:3px solid #ffc20e;outline-offset:2px}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Filtro de subcategoria com contador.",
+      "html": "<button class=\"ds-chip\">Dor e febre <span class=\"ds-chip-count\">3</span></button>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1.5px solid #f0c9c9;border-radius:30px;background:#fff;color:#8e0a18;font:700 13.5px Poppins,Arial,sans-serif;cursor:pointer}.ds-chip-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:20px;background:#ffe9ec;color:#c8102e;font-size:11px}.ds-chip:hover{background:#ffe9ec}.ds-chip:focus-visible{outline:3px solid #ffc20e;outline-offset:2px}"
+    },
+    {
+      "name": "Product Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Card de medicamento com ilustração e aviso.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"><span class=\"ds-demo\">ILUSTRAÇÃO</span></div><h3 class=\"ds-card-title\">Novalgina</h3><p class=\"ds-card-body\">Consulte disponibilidade e preço na loja.</p></article>",
+      "css": ".ds-card{min-width:0;overflow:hidden;border:1px solid #f3e8e8;border-radius:22px;background:#fff;box-shadow:0 4px 16px rgba(80,0,10,.10);transition:transform .25s,box-shadow .25s}.ds-card:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(120,0,16,.18)}.ds-card-media{position:relative;height:210px;background:linear-gradient(160deg,#fff6f7,#ffe9ec)}.ds-demo{position:absolute;left:12px;top:12px;padding:5px 10px;border-radius:20px;background:#fff;color:#8e0a18;font:800 11px Poppins,Arial,sans-serif}.ds-card-title{margin:0;padding:0 20px;font:700 18px/1.25 Poppins,Arial,sans-serif;color:#3a1010}.ds-card-body{margin:8px 0 0;padding:0 20px 20px;font:400 14px/1.5 Poppins,Arial,sans-serif;color:#6f6161}"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Busca em pílula com placeholder legível.",
+      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"Pesquise por medicamentos, marcas ou categorias...\" aria-label=\"Pesquisar produtos\">",
+      "css": ".ds-input{min-height:48px;width:100%;padding:12px 26px;border:0;border-radius:30px;background:#fff;color:#2b1a1a;font:400 15px Poppins,Arial,sans-serif}.ds-input::placeholder{color:#666666}.ds-input:focus-visible{outline:3px solid #ffc20e;outline-offset:2px}"
+    },
+    {
+      "name": "Main Navigation",
+      "kind": "nav",
+      "refersTo": "button-primary",
+      "description": "Pílula branca de navegação sobre o cabeçalho vermelho.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-active\" href=\"#\">Início</a><a class=\"ds-nav-link\" href=\"#\">Medicamentos</a></nav>",
+      "css": ".ds-nav{display:flex;gap:4px;padding:6px;border-radius:40px;background:#fff}.ds-nav-link{padding:10px 17px;border-radius:30px;color:#2b1a1a;font:500 14px Poppins,Arial,sans-serif;text-decoration:none}.ds-nav-link:hover{background:#ffe9ec;color:#c8102e}.ds-nav-active{background:#c8102e;color:#fff;font-weight:600}.ds-nav-link:focus-visible{outline:3px solid #ffc20e;outline-offset:2px}"
+    },
+    {
+      "name": "Illustration Badge",
+      "kind": "custom",
+      "refersTo": "chip",
+      "description": "Identifica imagem ilustrativa, não foto da embalagem.",
+      "html": "<span class=\"ds-badge\">ILUSTRAÇÃO — NÃO É FOTO DA EMBALAGEM</span>",
+      "css": ".ds-badge{display:inline-block;padding:6px 12px;border-radius:20px;background:#fff;color:#8e0a18;box-shadow:0 2px 8px rgba(80,0,10,.12);font:800 11px Poppins,Arial,sans-serif;letter-spacing:.03em}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A Farmácia da Esquina",
+    "overview": "O sistema visual se comporta como uma farmácia de bairro de Ouro Preto: direta, acolhedora e reconhecível à distância. O vermelho assume a autoridade da marca, o amarelo traz o calor e a assinatura cursiva 'Ouro Preto' dá o toque local. Hierarquia é construída por peso e cor, não por variações sutis de cinza. Cartões arredondados e sombras suaves organizam a informação sem criar cards dentro de cards.",
+    "keyCharacteristics": [
+      "Vermelho #c8102e como voz primária e amarelo #ffc20e como assinatura",
+      "Tipografia Poppins para tudo; Yellowtail apenas para a assinatura de cidade",
+      "Superfícies brancas com tints quentes e cantos generosos",
+      "Chamadas para ação em pílula, com o verde do WhatsApp em tom profundo"
+    ],
+    "rules": [
+      { "name": "The Red Voice Rule", "body": "O vermelho primário aparece em CTAs, títulos e marcadores; o vinho fica reservado a fundos. Amarelo nunca substitui vermelho em CTA.", "section": "colors" },
+      { "name": "The Deep Green Rule", "body": "O verde dos botões de WhatsApp é #0f7a3a, não o verde claro de logos. Contraste com texto branco é requisito, não preferência.", "section": "colors" },
+      { "name": "The Script-Only Rule", "body": "Yellowtail é usado apenas na assinatura 'Ouro Preto'. Nenhum outro texto recebe a fonte cursiva.", "section": "typography" },
+      { "name": "The Flat-Until-Touched Rule", "body": "Superfícies ficam planas em repouso; sombra mais forte só em hover ou elevação funcional.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do manter o verde dos CTAs em #0f7a3a (5,4:1 com branco).",
+      "Do usar clamp() e minmax(0,1fr) em layouts responsivos.",
+      "Do rotular ilustrações como 'ILUSTRAÇÃO — NÃO É FOTO DA EMBALAGEM'.",
+      "Do preservar o submenu de Medicamentos e a seta apenas onde há subcategorias reais."
+    ],
+    "donts": [
+      "Don't usar o verde claro #25d366 em botão com texto branco (1,98:1).",
+      "Don't aplicar Yellowtail fora da assinatura 'Ouro Preto'.",
+      "Don't criar categorias vazias só para preencher o menu.",
+      "Don't publicar preço, estoque, indicação terapêutica ou link wa.me não validado."
+    ]
+  }
+}

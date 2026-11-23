@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de uma caixa de luvas descartáveis">
+  <ellipse cx="120" cy="176" rx="70" ry="9" fill="#c8102e" opacity=".10"/>
+  <path d="M48 58h144v104H48z" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+  <path d="M48 58l14-14h144l-14 14z" fill="#ffe9ec" stroke="#c8102e" stroke-width="2.5"/>
+  <path d="M192 58l14-14v104l-14 14z" fill="#f6d3d9" stroke="#c8102e" stroke-width="2.5"/>
+  <rect x="66" y="82" width="108" height="56" rx="8" fill="#ffc20e"/>
+  <text x="120" y="104" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#8e0a18" text-anchor="middle">LUVAS</text>
+  <text x="120" y="122" font-family="Arial,sans-serif" font-size="9" fill="#8e0a18" text-anchor="middle">descartáveis</text>
+  <rect x="72" y="148" width="96" height="5" rx="2.5" fill="#ead9d9"/>
+</svg>

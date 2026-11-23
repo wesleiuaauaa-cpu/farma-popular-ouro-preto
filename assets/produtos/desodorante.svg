@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de um desodorante em aerossol">
+  <ellipse cx="120" cy="176" rx="54" ry="9" fill="#c8102e" opacity=".10"/>
+  <rect x="104" y="20" width="32" height="16" rx="4" fill="#8e0a18"/>
+  <path d="M100 36h40l6 14v104a12 12 0 01-12 12h-28a12 12 0 01-12-12V50z" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+  <path d="M96 88h48v50H96z" fill="#ffc20e"/>
+  <text x="120" y="108" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="#8e0a18" text-anchor="middle">DEO</text>
+  <rect x="104" y="118" width="32" height="4" rx="2" fill="#8e0a18" opacity=".55"/>
+  <rect x="108" y="128" width="24" height="4" rx="2" fill="#8e0a18" opacity=".35"/>
+  <path d="M160 62c8-4 14 2 8 8M172 48c14-8 24 4 12 14" stroke="#ffc20e" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

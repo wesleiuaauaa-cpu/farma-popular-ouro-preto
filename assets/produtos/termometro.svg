@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de um termômetro digital">
+  <ellipse cx="120" cy="176" rx="70" ry="9" fill="#c8102e" opacity=".10"/>
+  <g transform="rotate(-16 120 100)">
+    <rect x="106" y="26" width="28" height="128" rx="14" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+    <rect x="112" y="40" width="16" height="34" rx="4" fill="#eef2f6" stroke="#d7dde3"/>
+    <text x="120" y="62" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#c8102e" text-anchor="middle">36,5</text>
+    <rect x="109" y="84" width="22" height="6" rx="3" fill="#ffc20e"/>
+    <rect x="109" y="96" width="22" height="6" rx="3" fill="#ffc20e"/>
+    <path d="M112 142h16l-4 22h-8z" fill="#c8102e"/>
+    <rect x="100" y="22" width="40" height="6" rx="3" fill="#c8102e"/>
+  </g>
+  <path d="M168 60c12 10 12 26 0 36M182 50c20 16 20 42 0 58" stroke="#ffc20e" stroke-width="4" fill="none" stroke-linecap="round" opacity=".9"/>
+</svg>

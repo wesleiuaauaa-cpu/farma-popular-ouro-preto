@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de um frasco de perfume">
+  <ellipse cx="120" cy="176" rx="58" ry="9" fill="#c8102e" opacity=".10"/>
+  <rect x="102" y="18" width="36" height="18" rx="3" fill="#8e0a18"/>
+  <rect x="108" y="36" width="24" height="12" rx="2" fill="#ffc20e"/>
+  <path d="M84 48h72a10 10 0 0110 10v102a12 12 0 01-12 12H86a12 12 0 01-12-12V58a10 10 0 0110-10z" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+  <path d="M82 92h76v66H82z" fill="#c8102e"/>
+  <path d="M120 104l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z" fill="#ffc20e"/>
+  <text x="120" y="146" font-family="Arial,sans-serif" font-size="9" font-weight="bold" fill="#ffc20e" text-anchor="middle">PERFUME</text>
+  <path d="M96 66c8-5 40-5 48 0" stroke="#ead9d9" stroke-width="3" fill="none" stroke-linecap="round"/>
+</svg>

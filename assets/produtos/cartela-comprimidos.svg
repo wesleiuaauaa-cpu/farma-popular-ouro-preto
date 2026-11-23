@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de uma cartela de comprimidos">
+  <ellipse cx="120" cy="176" rx="80" ry="9" fill="#c8102e" opacity=".10"/>
+  <g transform="rotate(-7 120 104)">
+    <rect x="40" y="46" width="160" height="116" rx="10" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+    <rect x="50" y="56" width="140" height="96" rx="6" fill="#f3f3f3" stroke="#d7d7d7"/>
+    <g fill="#d9dde2" stroke="#b9c0c8" stroke-width="1.5">
+      <ellipse cx="76" cy="80" rx="14" ry="12"/><ellipse cx="112" cy="80" rx="14" ry="12"/><ellipse cx="148" cy="80" rx="14" ry="12"/><ellipse cx="176" cy="80" rx="14" ry="12"/>
+      <ellipse cx="76" cy="110" rx="14" ry="12"/><ellipse cx="112" cy="110" rx="14" ry="12"/><ellipse cx="148" cy="110" rx="14" ry="12"/><ellipse cx="176" cy="110" rx="14" ry="12"/>
+      <ellipse cx="76" cy="136" rx="14" ry="12"/><ellipse cx="112" cy="136" rx="14" ry="12"/><ellipse cx="148" cy="136" rx="14" ry="12"/><ellipse cx="176" cy="136" rx="14" ry="12"/>
+    </g>
+    <g fill="#fff" opacity=".9"><ellipse cx="72" cy="77" rx="5" ry="4"/><ellipse cx="108" cy="77" rx="5" ry="4"/><ellipse cx="144" cy="107" rx="5" ry="4"/><ellipse cx="172" cy="133" rx="5" ry="4"/></g>
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200" role="img" aria-label="Ilustração de um frasco de cápsulas">
+  <ellipse cx="120" cy="176" rx="60" ry="9" fill="#c8102e" opacity=".10"/>
+  <rect x="88" y="24" width="64" height="22" rx="5" fill="#8e0a18"/>
+  <rect x="88" y="24" width="64" height="6" rx="3" fill="#ffc20e"/>
+  <rect x="76" y="46" width="88" height="118" rx="16" fill="#fff" stroke="#c8102e" stroke-width="2.5"/>
+  <rect x="86" y="84" width="68" height="50" rx="5" fill="#ffc20e"/>
+  <text x="120" y="104" font-family="Arial,sans-serif" font-size="11" font-weight="bold" fill="#8e0a18" text-anchor="middle">CÁPSULAS</text>
+  <rect x="94" y="112" width="52" height="4" rx="2" fill="#8e0a18" opacity=".6"/>
+  <rect x="100" y="122" width="40" height="4" rx="2" fill="#8e0a18" opacity=".4"/>
+  <g fill="#c8102e" opacity=".25"><circle cx="100" cy="150" r="4"/><circle cx="120" cy="152" r="4"/><circle cx="140" cy="150" r="4"/></g>
+</svg>

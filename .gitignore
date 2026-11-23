@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Ferramentas locais (não fazem parte do site)
+.opencode/
+.playwright-mcp/
+*.log
+
+# Rascunhos, capturas e mockup original
+_cmp_*.png
+site-desktop.png
+mockup-render.png
+hero-photo-element.png
+preview.webp
+Farma Popular Ouro Preto*Mockup Home.html
+anvisa_research_output.txt
+
+# Sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
