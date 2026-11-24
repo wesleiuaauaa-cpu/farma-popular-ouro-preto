@@ -15,4 +15,4 @@ sys.path.insert(0, str(_ROOT))
 from src.infrastructure.validator import main  # noqa: E402
 
 if __name__ == "__main__":
-    main()
+    sys.exit(1 if main() else 0)
