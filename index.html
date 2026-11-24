@@ -56,6 +56,8 @@
     /* ══ Hero ══ */
     .hero{background:linear-gradient(135deg,#c8102e 0%,#a50b1f 55%,#8e0a18 100%);color:#fff;position:relative;overflow:hidden}
     .hero .wrap{position:relative;z-index:1}
+    /* Mantém o submenu acima do restante do cabeçalho ao descer o mouse. */
+    .hero .navwrap{z-index:5}
     .deco{position:absolute;inset:0;pointer-events:none;z-index:0}
     .deco svg{position:absolute;opacity:.14}
     .d1{left:5%;top:52%;animation:drift 9s ease-in-out infinite}
@@ -351,7 +353,7 @@
       <svg class="d4" width="34" height="34" viewBox="0 0 52 52"><path d="M18 2h16v16h16v16H34v16H18V34H2V18h16z" fill="#fff"/></svg>
       <svg class="d5" width="44" height="18" viewBox="0 0 44 18"><rect width="44" height="18" rx="9" fill="#fff"/><rect width="22" height="18" rx="9" fill="#ffc20e"/></svg>
     </div>
-    <div class="wrap">
+    <div class="wrap navwrap">
       <div class="nav" id="nav">
         <a class="logo" href="index.html" aria-label="Rede Minas Farma Popular – início">
           <svg width="54" height="54" viewBox="0 0 52 52" aria-hidden="true"><defs><clipPath id="cy"><polygon points="0,0 52,0 0,52"/></clipPath><clipPath id="cw"><polygon points="52,0 52,52 0,52"/></clipPath></defs><g clip-path="url(#cy)"><path transform="translate(-1.6 -1.6)" d="M18 2h16v16h16v16H34v16H18V34H2V18h16z" fill="#ffc20e"/></g><g clip-path="url(#cw)"><path transform="translate(1.6 1.6)" d="M18 2h16v16h16v16H34v16H18V34H2V18h16z" fill="#fff"/></g></svg>

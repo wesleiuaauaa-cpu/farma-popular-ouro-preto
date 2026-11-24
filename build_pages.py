@@ -173,7 +173,7 @@ def header(active, title, script, desc, crumb):
       '<a class="skip" href="#conteudo">Pular para o conteúdo</a>'
       + TOPBAR
       + '<header class="pagehead">' + DECO
-      + '<div class="wrap"><div class="nav" id="nav">'
+      + '<div class="wrap navwrap"><div class="nav" id="nav">'
       + '<a class="logo" href="index.html" aria-label="Rede Minas Farma Popular – início">' + LOGO_SVG
       + '<span><small>Rede Minas</small><b>Farma</b><b>Popular</b></span></a>'
       + menu(active)

@@ -56,6 +56,10 @@ ul{list-style:none}
 /* ══ Cabeçalho das páginas internas ══ */
 .pagehead{background:linear-gradient(135deg,#c8102e 0%,#a50b1f 55%,#8e0a18 100%);color:#fff;position:relative;overflow:hidden}
 .pagehead .wrap{position:relative;z-index:1}
+/* O container do menu deve ficar ACIMA da faixa de categorias: sem isso,
+   a .catbar (posterior no DOM e no mesmo nível de empilhamento) rouba o
+   :hover quando o mouse desce do item para o submenu. */
+.pagehead .navwrap{z-index:5}
 .deco{position:absolute;inset:0;pointer-events:none;z-index:0}
 .deco svg{position:absolute;opacity:.14}
 .d1{left:5%;top:52%;animation:drift 9s ease-in-out infinite}
