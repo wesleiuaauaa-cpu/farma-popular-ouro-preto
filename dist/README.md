@@ -35,7 +35,7 @@ de publicar. O aviso de cookies usa `localStorage` e não carrega nada de tercei
 hoje; a estrutura para scripts opcionais está em `assets/js/site.js`.
 
 O build final para publicação fica em `dist/` (rode `python build_site.py`).
-Instruções completas em `docs/DEPLOY.md`.
+Instruções completas em `docs/04-operacao/build-e-deploy.md`.
 
 A página extra de **Dicas de Saúde** foi criada para dar destino real aos botões
 "Veja mais" e "Conheça nossas dicas" da home.
@@ -72,7 +72,7 @@ Se a loja trocar de número, altere **somente** `whatsappNumber`.
   base oficial para a maioria dos medicamentos — marcados como pendentes nas fichas.
 - **Imagens**: fotos reais das 7 embalagens e das 5 vitrines de produtos, autorizadas
   pelo proprietário em 23/11/2026 e salvas localmente em `assets/produtos/`.
-  Fontes, ressalvas e alerta sobre imagens de bancos em `docs/fontes.md`.
+  Fontes, ressalvas e alerta sobre imagens de bancos em `docs/05-dominio/fontes-e-dados.md`.
 
 ## Catálogo de medicamentos (vitrine informativa)
 
@@ -84,7 +84,7 @@ com dados cadastrais, avisos, link para o Bulário da Anvisa e botão de consult
 A seta do menu em **Medicamentos** agora corresponde a esse submenu real. A seta de
 **Beleza e Cuidados** foi removida porque não há subcategorias cadastradas com conteúdo.
 
-Fontes, registros verificados e pendências: **`docs/fontes.md`**.
+Fontes, registros verificados e pendências: **`docs/05-dominio/fontes-e-dados.md`**.
 
 ## Dados usados (informados)
 
@@ -131,7 +131,7 @@ Ajustes feitos nos media queries já existentes (sem solução paralela):
 ## Impeccable (qualidade visual)
 
 O projeto usa a skill Impeccable v4.10.0 instalada em `.opencode/skills/impeccable`
-(comando `/impeccable`). A identidade visual está documentada em `DESIGN.md` e no
+(comando `/impeccable`). A identidade visual está documentada em `docs/02-arquitetura/identidade-visual.md` e no
 sidecar `.impeccable/design.json`. Relatórios de auditoria ficam em `.impeccable/audit/`.
 
 Última auditoria: **18/20 (Excellent)** — sem P0/P1/P2; 3 avisos P3 de ritmo de texto.
@@ -146,15 +146,31 @@ python build_pages.py
 python validate_site.py   # checa links internos e arquivos locais
 ```
 
+## Organização do código (hexagonal)
+
+O código vivo em `src/`, separado por responsabilidade:
+
+- `src/domain/` — núcleo: dados e regras do negócio (textos legais).
+- `src/application/` — casos de uso: geração das páginas.
+- `src/infrastructure/` — adaptadores: build em `dist/` e validação.
+- `src/interface/` — adaptador de entrada: pesquisa na base da Anvisa.
+
+Na raiz ficam apenas entrypoints finos com os mesmos nomes de sempre
+(`build_pages.py`, `build_site.py`, `validate_site.py`, `research_anvisa.py`,
+`legal_content.py`). Detalhes em `docs/02-arquitetura/arquitetura-hexagonal.md`
+e `docs/02-arquitetura/arvore-de-pastas.md`.
+
+A documentação está em árvore temática em `docs/`; comece por `docs/README.md`.
+
 Arquivos compartilhados:
 
 - `assets/css/site.css` — estilos das páginas internas
 - `assets/js/site.js` — configuração do WhatsApp, menu e busca
 - `research_anvisa.py` — reproduz a consulta à base oficial da Anvisa usada no catálogo
-- `docs/fontes.md` — fontes, registros verificados e pendências de confirmação
-- `docs/AUDITORIA.md` — veredito de prontidão para build/publicação e evidências
-- `docs/DEPLOY.md` — passo a passo de build e deploy na Vercel
-- `docs/MAPA_DOCUMENTACAO.md` — índice que explica toda a documentação do projeto
+- `docs/05-dominio/fontes-e-dados.md` — fontes, registros verificados e pendências de confirmação
+- `docs/04-operacao/auditoria.md` — veredito de prontidão para build/publicação e evidências
+- `docs/04-operacao/build-e-deploy.md` — passo a passo de build e deploy na Vercel
+- `docs/README.md` — índice que explica toda a documentação do projeto
 - `assets/produtos/*.webp` — 32 fotos reais (7 medicamentos + 5 vitrines × 5 itens)
 - `assets/produtos/*.svg` — ilustrações antigas mantidas apenas como referência
 

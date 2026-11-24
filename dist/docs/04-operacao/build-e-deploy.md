@@ -16,7 +16,7 @@ O comando:
 2. cria a pasta `dist/` com:
    - todos os `.html` públicos (home + 25 páginas internas),
    - `assets/` (CSS, JS, fontes e imagens),
-   - `docs/` e os arquivos `README.md` / `DESIGN.md`.
+   - `docs/` e os arquivos `README.md` / `docs/02-arquitetura/identidade-visual.md`.
 
 > A home `index.html` **não** é gerada automaticamente: ela foi ajustada à mão
 > para preservar a identidade aprovada. Se mexer nela, rode o build na mesma.
@@ -51,7 +51,7 @@ As páginas em `legal_content.py` são **modelos ilustrativos**. Antes de ir ao 
       `[E-MAIL DO ENCARREGADO]` e `[DATA DA ÚLTIMA REVISÃO]`;
 - [ ] revisar os textos com quem responda juridicamente pela empresa;
 - [ ] confirmar se as fotos de bancos de imagens exigem licença/atribuição
-      (ver `docs/fontes.md`);
+      (ver `docs/05-dominio/fontes-e-dados.md`);
 - [ ] se for adicionar Analytics/Ads, colocar o script em `OPTIONAL_SCRIPTS`
       em `assets/js/site.js` — ele só carrega após o visitante aceitar cookies;
 - [ ] atualizar `politica-de-cookies.html` com a lista real de cookies.

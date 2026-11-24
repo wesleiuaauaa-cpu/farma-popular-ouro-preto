@@ -1,38 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Verificação rápida de links e arquivos locais do site."""
-import re
+"""Entrypoint de compatibilidade.
+
+A implementação vive em src/infrastructure/validator.py (arquitetura hexagonal).
+Este arquivo apenas define a raiz do projeto e delega a execução.
+"""
+import os
+import sys
 from pathlib import Path
 
-root = Path(__file__).resolve().parent
-files = sorted(p for p in root.glob('*.html') if not p.name.startswith('Farma Popular'))
-print('Páginas publicadas: %d' % len(files))
-for p in files:
-    print(' -', p.name)
+_ROOT = Path(__file__).resolve().parent
+os.environ["FARMA_PROJECT_ROOT"] = str(_ROOT)
+sys.path.insert(0, str(_ROOT))
 
-bad, missing = [], []
-for p in files:
-    s = p.read_text(encoding='utf-8')
-    if 'href="#"' in s:
-        bad.append(p.name)
-    for m in re.finditer(r'(?:href|src)="([^"]+)"', s):
-        u = m.group(1)
-        if u.startswith(('#', 'http', 'mailto:', 'tel:', 'data:')):
-            continue
-        u = u.split('?')[0].split('#')[0]
-        if u and not (root / u).exists():
-            missing.append((p.name, u))
+from src.infrastructure.validator import main  # noqa: E402
 
-print('\nhref="#" restantes:', bad or 'nenhum')
-print('Arquivos locais inexistentes:', missing or 'nenhum')
-
-print('\nProdutos ilustrativos por página:')
-for p in files:
-    n = p.read_text(encoding='utf-8').count('class="product"')
-    if n:
-        print(' - %s: %d' % (p.name, n))
-
-print('\nLinks WhatsApp (data-wa) por página:')
-for p in files:
-    n = p.read_text(encoding='utf-8').count('data-wa ')
-    if n:
-        print(' - %s: %d' % (p.name, n))
+if __name__ == "__main__":
+    main()

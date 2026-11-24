@@ -40,7 +40,7 @@
 
 - **32 fotos WebP** válidas (7 medicamentos + 25 itens das cinco vitrines), todas abaixo de 900×900.
 - Nenhuma imagem quebrada em nenhuma largura testada.
-- Risco registrado: algumas fotos vêm de bancos de imagem (Freepik, inclusive uma "premium") e de matéria editorial (Vogue/Globo). A autorização do proprietário cobre o uso de fotos de produtos, mas **a licença dessas fontes específicas deve ser confirmada**. Detalhes em `docs/fontes.md`.
+- Risco registrado: algumas fotos vêm de bancos de imagem (Freepik, inclusive uma "premium") e de matéria editorial (Vogue/Globo). A autorização do proprietário cobre o uso de fotos de produtos, mas **a licença dessas fontes específicas deve ser confirmada**. Detalhes em `docs/05-dominio/fontes-e-dados.md`.
 
 ### 4. Navegador (104 verificações)
 
@@ -79,7 +79,7 @@
 
 2. **Revisão jurídica/contábil:** razão social, CNPJ, e-mail do encarregado de dados, prazos de entrega/troca e a política real da loja.
 
-3. **Licença das fotos de bancos/editoriais:** confirmar ou substituir os arquivos indicados em `docs/fontes.md`.
+3. **Licença das fotos de bancos/editoriais:** confirmar ou substituir os arquivos indicados em `docs/05-dominio/fontes-e-dados.md`.
 
 ### Não bloqueantes (melhorias futuras)
 
@@ -109,8 +109,8 @@ O relatório original desta auditoria, com os números brutos, está registrado 
 
 ## Relação com os outros documentos
 
-- `docs/DEPLOY.md` — como publicar na Vercel (o passo seguinte a esta auditoria).
-- `docs/fontes.md` — origem dos dados e das fotos (base das pendências 3).
-- `docs/MAPA_DOCUMENTACAO.md` — índice explicativo de toda a documentação do projeto.
+- `docs/04-operacao/build-e-deploy.md` — como publicar na Vercel (o passo seguinte a esta auditoria).
+- `docs/05-dominio/fontes-e-dados.md` — origem dos dados e das fotos (base das pendências 3).
+- `docs/README.md` — índice explicativo de toda a documentação do projeto.
 - `README.md` — visão geral e rotas.
-- `DESIGN.md` — sistema visual e componentes.
+- `docs/02-arquitetura/identidade-visual.md` — sistema visual e componentes.
