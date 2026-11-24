@@ -28,12 +28,11 @@ def main():
         shutil.rmtree(DIST)
     DIST.mkdir()
 
-    pages = 0
-    for f in sorted(ROOT.glob("*.html")):
-        if f.name.startswith("Farma Popular"):
-            continue
-        shutil.copy2(f, DIST / f.name)
-        pages += 1
+    shutil.copy2(ROOT / "index.html", DIST / "index.html")
+    pages = 1
+    if (ROOT / "pages").exists():
+        shutil.copytree(ROOT / "pages", DIST / "pages")
+        pages += sum(1 for _ in (ROOT / "pages").rglob("*.html"))
 
     shutil.copytree(ROOT / "assets", DIST / "assets")
 

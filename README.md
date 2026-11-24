@@ -9,28 +9,28 @@ visualmente; as páginas internas foram criadas reaproveitando a mesma identidad
 | Página | Arquivo |
 |---|---|
 | Início (home aprovada) | `index.html` |
-| Medicamentos e genéricos (7 medicamentos reais) | `medicamentos-e-genericos.html` |
-| Subcategoria: Dor e febre | `medicamentos-dor-e-febre.html` |
-| Subcategoria: Gripes e resfriados | `medicamentos-gripes-e-resfriados.html` |
-| Subcategoria: Alergias | `medicamentos-alergias.html` |
-| Subcategoria: Saúde digestiva | `medicamentos-saude-digestiva.html` |
-| Detalhes de cada medicamento (7 páginas) | `produto-<slug>.html` |
-| Beleza e cuidados (vitrine com fotos) | `beleza-e-cuidados.html` |
-| Higiene pessoal | `higiene-pessoal.html` |
-| Infantil | `infantil.html` |
-| Saúde e bem-estar | `saude-e-bem-estar.html` |
-| Perfumaria | `perfumaria.html` |
-| Sobre a farmácia | `sobre.html` |
-| Contato e localização | `contato.html` |
-| Dicas de saúde | `dicas-de-saude.html` |
-| Política de Privacidade (modelo) | `politica-de-privacidade.html` |
-| Termos de Uso (modelo) | `termos-de-uso.html` |
-| Política de Cookies (modelo) | `politica-de-cookies.html` |
-| Aviso de Responsabilidade (modelo) | `responsabilidade.html` |
-| Entrega e Troca (modelo) | `entrega-e-troca.html` |
+| Medicamentos e genéricos (7 medicamentos reais) | `pages/medicamentos/medicamentos-e-genericos.html` |
+| Subcategoria: Dor e febre | `pages/medicamentos/medicamentos-dor-e-febre.html` |
+| Subcategoria: Gripes e resfriados | `pages/medicamentos/medicamentos-gripes-e-resfriados.html` |
+| Subcategoria: Alergias | `pages/medicamentos/medicamentos-alergias.html` |
+| Subcategoria: Saúde digestiva | `pages/medicamentos/medicamentos-saude-digestiva.html` |
+| Detalhes de cada medicamento (7 páginas) | `pages/medicamentos/produto-<slug>.html` |
+| Beleza e cuidados (vitrine com fotos) | `pages/categorias/beleza-e-cuidados.html` |
+| Higiene pessoal | `pages/categorias/higiene-pessoal.html` |
+| Infantil | `pages/categorias/infantil.html` |
+| Saúde e bem-estar | `pages/categorias/saude-e-bem-estar.html` |
+| Perfumaria | `pages/categorias/perfumaria.html` |
+| Sobre a farmácia | `pages/institucionais/sobre.html` |
+| Contato e localização | `pages/institucionais/contato.html` |
+| Dicas de saúde | `pages/institucionais/dicas-de-saude.html` |
+| Política de Privacidade (modelo) | `pages/legais/politica-de-privacidade.html` |
+| Termos de Uso (modelo) | `pages/legais/termos-de-uso.html` |
+| Política de Cookies (modelo) | `pages/legais/politica-de-cookies.html` |
+| Aviso de Responsabilidade (modelo) | `pages/legais/responsabilidade.html` |
+| Entrega e Troca (modelo) | `pages/legais/entrega-e-troca.html` |
 
 As cinco páginas legais estão linkadas no rodapé de **todas** as páginas. O conteúdo
-é **modelo ilustrativo** (`legal_content.py`) e precisa ser preenchido/revisado antes
+é **modelo ilustrativo** (`src/domain/legal.py`) e precisa ser preenchido/revisado antes
 de publicar. O aviso de cookies usa `localStorage` e não carrega nada de terceiros
 hoje; a estrutura para scripts opcionais está em `assets/js/site.js`.
 
@@ -106,7 +106,7 @@ Fontes, registros verificados e pendências: **`docs/05-dominio/fontes-e-dados.m
 
 - Navegação consistente em todas as páginas + faixa com as 6 categorias.
 - Menu mobile acessível (botão `aria-expanded`, fechar com Esc/fora/clique).
-- Busca da home redireciona para `medicamentos-e-genericos.html?q=...` e filtra os
+- Busca da home redireciona para `pages/medicamentos/medicamentos-e-genericos.html?q=...` e filtra os
   medicamentos cadastrados (sem backend).
 - Botões de consulta com mensagem pré-preenchida contendo nome, princípio ativo e registro
   do medicamento, abertos no WhatsApp validado da farmácia.
@@ -157,7 +157,7 @@ O código vivo em `src/`, separado por responsabilidade:
 
 Na raiz ficam apenas entrypoints finos com os mesmos nomes de sempre
 (`build_pages.py`, `build_site.py`, `validate_site.py`, `research_anvisa.py`,
-`legal_content.py`). Detalhes em `docs/02-arquitetura/arquitetura-hexagonal.md`
+`src/domain/legal.py`). Detalhes em `docs/02-arquitetura/arquitetura-hexagonal.md`
 e `docs/02-arquitetura/arvore-de-pastas.md`.
 
 A documentação está em árvore temática em `docs/`; comece por `docs/README.md`.

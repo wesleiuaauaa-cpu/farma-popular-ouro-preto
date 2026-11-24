@@ -36,7 +36,7 @@ var SITE_CONFIG = {
       } else {
         /* Número não validado: NÃO publicamos link wa.me.
            O botão leva ao aviso em contato.html até a confirmação pela loja. */
-        a.href = 'contato.html#whatsapp';
+        a.href = '/pages/institucionais/contato.html#whatsapp';
         a.removeAttribute('target');
         a.setAttribute('data-wa-status', 'nao-validado');
         a.setAttribute('title', 'Número de WhatsApp em validação — confirme antes de publicar');
@@ -86,7 +86,7 @@ var SITE_CONFIG = {
       e.preventDefault();
       var input = document.getElementById('q');
       var q = input ? input.value.trim() : '';
-      window.location.href = 'medicamentos-e-genericos.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+      window.location.href = '/pages/medicamentos/medicamentos-e-genericos.html' + (q ? '?q=' + encodeURIComponent(q) : '');
     });
   }
 

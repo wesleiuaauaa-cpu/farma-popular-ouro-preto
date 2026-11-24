@@ -62,7 +62,7 @@ docs/
 Estes arquivos vivem na raiz, mas são **entrypoints**, não documentos descritivos:
 
 - `build_pages.py`, `build_site.py`, `validate_site.py`, `research_anvisa.py`,
-  `legal_content.py` — wrappers finos que delegam para `src/`.
+  `src/domain/legal.py` — wrappers finos que delegam para `src/`.
 - `vercel.json` — configuração da hospedagem.
 - `.gitignore` — regras do Git.
 

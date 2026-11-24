@@ -75,7 +75,7 @@
    | Aviso de Responsabilidade | 1 |
    | Entrega e Troca | 3 |
 
-   Editar `legal_content.py`, rodar `python build_site.py` e conferir o resultado. O texto continua exibindo o selo "MODELO ILUSTRATIVO" — ele deve ser removido apenas quando a revisão terminar (a lógica está em `legal_body()` em `build_pages.py`).
+   Editar `src/domain/legal.py`, rodar `python build_site.py` e conferir o resultado. O texto continua exibindo o selo "MODELO ILUSTRATIVO" — ele deve ser removido apenas quando a revisão terminar (a lógica está em `legal_body()` em `build_pages.py`).
 
 2. **Revisão jurídica/contábil:** razão social, CNPJ, e-mail do encarregado de dados, prazos de entrega/troca e a política real da loja.
 

@@ -5,7 +5,11 @@ Visão física do repositório e o motivo de cada pasta.
 ```
 .
 ├── index.html                  HOME aprovada (não gerada)
-├── *.html                      25 páginas geradas
+├── pages/                      25 páginas geradas, por domínio
+│   ├── medicamentos/           12 (lista, subcategorias e fichas)
+│   ├── categorias/             5 vitrines
+│   ├── institucionais/         3 (sobre, contato, dicas)
+│   └── legais/                 5 documentos
 ├── build_pages.py              entrypoint → src/application/generator.py
 ├── build_site.py               entrypoint → src/infrastructure/build.py
 ├── validate_site.py            entrypoint → src/infrastructure/validator.py
@@ -26,7 +30,8 @@ Visão física do repositório e o motivo de cada pasta.
 │   └── interface/              adaptadores de entrada (CLI)
 ├── docs/                       documentação em árvore temática
 └── dist/                       build publicável (Vercel)
-    ├── *.html                  26 páginas
+    ├── index.html              home
+    └── pages/                  25 páginas (mesma árvore)
     ├── assets/                 cópia de assets/
     └── docs/                   cópia de docs/
 ```

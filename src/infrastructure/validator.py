@@ -7,7 +7,8 @@ from pathlib import Path
 
 def main():
     root = Path(os.environ.get("FARMA_PROJECT_ROOT", Path(__file__).resolve().parents[2]))
-    files = sorted(p for p in root.glob("*.html") if not p.name.startswith("Farma Popular"))
+    files = [root / "index.html"]
+    files += sorted((root / "pages").rglob("*.html")) if (root / "pages").exists() else []
     print("Páginas publicadas: %d" % len(files))
     for p in files:
         print(" -", p.name)
@@ -22,7 +23,7 @@ def main():
             if u.startswith(("#", "http", "mailto:", "tel:", "data:")):
                 continue
             u = u.split("?")[0].split("#")[0]
-            if u and not (root / u).exists():
+            if u and not (root / u.lstrip("/")).exists():
                 missing.append((p.name, u))
 
     print("\nhref=\"#\" restantes:", bad or "nenhum")

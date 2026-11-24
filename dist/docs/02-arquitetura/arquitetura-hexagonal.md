@@ -21,7 +21,7 @@ src/
 ```
 
 Na raiz ficam apenas **entrypoints finos** (`build_pages.py`, `build_site.py`,
-`validate_site.py`, `research_anvisa.py` e `legal_content.py`). Eles não contêm
+`validate_site.py`, `research_anvisa.py` e `src/domain/legal.py`). Eles não contêm
 regra de negócio: apenas definem a raiz do projeto e delegam para `src/`. Assim
 os comandos de sempre continuam funcionando:
 

@@ -17,6 +17,54 @@ from html import escape
 
 ROOT = Path(os.environ.get('FARMA_PROJECT_ROOT', Path(__file__).resolve().parents[2]))
 
+# Caminhos publicos. A home fica na raiz; as internas em pages/ por dominio.
+PAGE_PATHS = {
+    'medicamentos-e-genericos.html': '/pages/medicamentos/medicamentos-e-genericos.html',
+    'medicamentos-dor-e-febre.html': '/pages/medicamentos/medicamentos-dor-e-febre.html',
+    'medicamentos-gripes-e-resfriados.html': '/pages/medicamentos/medicamentos-gripes-e-resfriados.html',
+    'medicamentos-alergias.html': '/pages/medicamentos/medicamentos-alergias.html',
+    'medicamentos-saude-digestiva.html': '/pages/medicamentos/medicamentos-saude-digestiva.html',
+    'produto-novalgina-dipirona-monoidratada.html': '/pages/medicamentos/produto-novalgina-dipirona-monoidratada.html',
+    'produto-tylenol-paracetamol.html': '/pages/medicamentos/produto-tylenol-paracetamol.html',
+    'produto-alivium-ibuprofeno.html': '/pages/medicamentos/produto-alivium-ibuprofeno.html',
+    'produto-paracetamol-clorfeniramina-fenilefrina.html': '/pages/medicamentos/produto-paracetamol-clorfeniramina-fenilefrina.html',
+    'produto-loratadina-generico.html': '/pages/medicamentos/produto-loratadina-generico.html',
+    'produto-cetirizina-generico.html': '/pages/medicamentos/produto-cetirizina-generico.html',
+    'produto-omeprazol-generico.html': '/pages/medicamentos/produto-omeprazol-generico.html',
+    'beleza-e-cuidados.html': '/pages/categorias/beleza-e-cuidados.html',
+    'higiene-pessoal.html': '/pages/categorias/higiene-pessoal.html',
+    'infantil.html': '/pages/categorias/infantil.html',
+    'saude-e-bem-estar.html': '/pages/categorias/saude-e-bem-estar.html',
+    'perfumaria.html': '/pages/categorias/perfumaria.html',
+    'sobre.html': '/pages/institucionais/sobre.html',
+    'contato.html': '/pages/institucionais/contato.html',
+    'dicas-de-saude.html': '/pages/institucionais/dicas-de-saude.html',
+    'politica-de-privacidade.html': '/pages/legais/politica-de-privacidade.html',
+    'termos-de-uso.html': '/pages/legais/termos-de-uso.html',
+    'politica-de-cookies.html': '/pages/legais/politica-de-cookies.html',
+    'responsabilidade.html': '/pages/legais/responsabilidade.html',
+    'entrega-e-troca.html': '/pages/legais/entrega-e-troca.html',
+    'index.html': '/index.html',
+}
+
+
+def public_path(name):
+    if name in PAGE_PATHS:
+        return PAGE_PATHS[name]
+    if name.startswith('produto-'):
+        return '/pages/medicamentos/' + name
+    return '/' + name
+
+
+def rewrite_links(html):
+    """Reescreve links e recursos para caminhos absolutos da raiz publica."""
+    for old, new in sorted(PAGE_PATHS.items(), key=lambda kv: -len(kv[0])):
+        html = html.replace('href="%s"' % old, 'href="%s"' % new)
+    html = html.replace('href="assets/', 'href="/assets/')
+    html = html.replace('src="assets/', 'src="/assets/')
+    return html
+
+
 # ---------------------------------------------------------------------------
 # Ícones SVG embutidos (mesmo conjunto de traços da home — sem emoji)
 # ---------------------------------------------------------------------------
@@ -780,8 +828,10 @@ def legal_body(page):
 # Escrita dos arquivos
 # ---------------------------------------------------------------------------
 def write(name, content):
-    (ROOT / name).write_text(content, encoding='utf-8')
-    print('OK  ' + name)
+    dest = ROOT / public_path(name).lstrip('/')
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(rewrite_links(content), encoding='utf-8')
+    print('OK  ' + public_path(name))
 
 
 FILES_BY_KEY = {
