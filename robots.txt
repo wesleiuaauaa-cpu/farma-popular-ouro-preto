@@ -1,0 +1,9 @@
+# Farma Popular Ouro Preto — https://farma-popular-ouro-preto.vercel.app
+User-agent: *
+Allow: /
+
+# Documentação interna do projeto (não é conteúdo do site)
+Disallow: /docs/
+Disallow: /README.md
+
+Sitemap: https://farma-popular-ouro-preto.vercel.app/sitemap.xml

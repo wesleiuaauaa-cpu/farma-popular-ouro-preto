@@ -37,6 +37,15 @@ hoje; a estrutura para scripts opcionais está em `assets/js/site.js`.
 O build final para publicação fica em `dist/` (rode `python build_site.py`).
 Instruções completas em `docs/04-operacao/build-e-deploy.md`.
 
+## Publicado
+
+- **Produção:** https://farma-popular-ouro-preto.vercel.app
+- **Repositório conectado:** https://github.com/wesleiuaauaa-cpu/farma-popular-ouro-preto
+- **Projeto na Vercel:** `wesleiuaauaa-6571/farma-popular-ouro-preto`
+
+O push para `main` dispara um novo deploy automático. Cada commit com `dist/`
+atualizado vira uma versão pública.
+
 A página extra de **Dicas de Saúde** foi criada para dar destino real aos botões
 "Veja mais" e "Conheça nossas dicas" da home.
 

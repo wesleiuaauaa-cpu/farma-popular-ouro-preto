@@ -12,6 +12,7 @@ A home (index.html) NÃO é gerada aqui — ela foi apenas ajustada pontualmente
 import os
 from pathlib import Path
 
+from src.domain import seo
 from src.domain.legal import LEGAL_PAGES
 from html import escape
 
@@ -56,10 +57,29 @@ def public_path(name):
     return '/' + name
 
 
+def public_url(name_or_path):
+    """URL pública limpa (sem .html), como a Vercel serve (cleanUrls)."""
+    path = PAGE_PATHS.get(name_or_path) or (
+        name_or_path if name_or_path.startswith('/') else '/' + name_or_path)
+    if path in ('/index.html', 'index.html', '/'):
+        return '/'
+    return path[:-5] if path.endswith('.html') else path
+
+
+# Páginas indexáveis publicadas, na ordem em que entram no sitemap.
+SITEMAP = []
+
+
+def register(path, priority, changefreq='monthly', indexable=True):
+    if indexable:
+        SITEMAP.append({'path': path, 'priority': priority,
+                        'changefreq': changefreq})
+
+
 def rewrite_links(html):
-    """Reescreve links e recursos para caminhos absolutos da raiz publica."""
+    """Reescreve links e recursos para caminhos públicos absolutos e limpos."""
     for old, new in sorted(PAGE_PATHS.items(), key=lambda kv: -len(kv[0])):
-        html = html.replace('href="%s"' % old, 'href="%s"' % new)
+        html = html.replace('href="%s"' % old, 'href="%s"' % public_url(old))
     html = html.replace('href="assets/', 'href="/assets/')
     html = html.replace('src="assets/', 'src="/assets/')
     return html
@@ -217,7 +237,21 @@ def catbar(active):
 WA_DEFAULT = 'Olá! Gostaria de informações sobre os produtos da Farma Popular Ouro Preto.'
 
 
-def header(active, title, script, desc, crumb):
+def crumb_nav(trail):
+    """Trilha de navegação visível, espelhando o BreadcrumbList do JSON-LD."""
+    out = ['<a href="/">Início</a>']
+    last = len(trail) - 1
+    for i, (label, path) in enumerate(trail):
+        out.append(ico('arrow', 13))
+        if i == last:
+            out.append('<span aria-current="page">' + escape(label) + '</span>')
+        else:
+            out.append('<a href="%s">%s</a>' % (path, escape(label)))
+    return ('<nav class="crumb" aria-label="Trilha de navegação">'
+            + ''.join(out) + '</nav>')
+
+
+def header(active, title, script, desc, trail):
     return (
       '<a class="skip" href="#conteudo">Pular para o conteúdo</a>'
       + TOPBAR
@@ -232,7 +266,7 @@ def header(active, title, script, desc, crumb):
       + '</div></div>'
       + catbar(active)
       + '<div class="wrap"><div class="ptitle">'
-      + '<div class="crumb"><a href="index.html">Início</a>' + ico('arrow', 13) + '<span>' + escape(crumb) + '</span></div>'
+      + crumb_nav(trail)
       + '<h1>' + escape(title) + '</h1><div class="script">' + escape(script) + '</div>'
       + '<p>' + escape(desc) + '</p>'
       + '</div></div>'
@@ -315,18 +349,32 @@ def footer():
  )
 
 
-def shell(active, title, script, desc, crumb, body):
+def page(name, active, title, script, desc, crumb, body, page_type='WebPage',
+         trail=None, priority=0.5, changefreq='monthly', indexable=True,
+         og_type='website'):
+    """Monta uma página completa com <head> de SEO e trilha de navegação."""
+    path = public_url(name)
+    full_title = title + ' — ' + seo.SITE_NAME
+    trail = list(trail) if trail else [(crumb, path)]
+    head = seo.head_seo(full_title, desc, path, page_type=page_type,
+                        trail=trail, indexable=indexable, og_type=og_type)
+    register(path, priority, changefreq, indexable)
     return ('<!DOCTYPE html>\n<html lang="pt-BR">\n<head>\n'
       '<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
-      '<title>' + escape(title) + ' — Farma Popular Ouro Preto</title>\n'
+      '<title>' + escape(full_title) + '</title>\n'
       '<meta name="description" content="' + escape(desc) + '">\n'
+      + head + '\n'
       '<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 52 52\'%3E%3Crect width=\'52\' height=\'52\' rx=\'10\' fill=\'%23c8102e\'/%3E%3Cpath d=\'M19 6h14v13h13v14H33v13H19V33H6V19h13z\' fill=\'%23ffc20e\'/%3E%3C/svg%3E">\n'
       '<link rel="stylesheet" href="assets/css/site.css">\n</head>\n<body>\n'
-      + header(active, title, script, desc, crumb)
+      + header(active, title, script, desc, trail)
       + body
       + '</div></main>\n'
       + footer()
       + '\n</body>\n</html>\n')
+
+
+def emit(name, *args, **kwargs):
+    write(name, page(name, *args, **kwargs))
 
 
 # ---------------------------------------------------------------------------
@@ -834,6 +882,16 @@ def write(name, content):
     print('OK  ' + public_path(name))
 
 
+def notfound_body():
+    return ('<div class="panel">'
+      '<p class="legal-lead">O endereço acessado não existe ou foi movido. '
+      'Use o menu acima para continuar navegando ou volte para a página inicial.</p>'
+      '<p><a class="btn red sm" href="index.html">Ir para a página inicial</a> '
+      '<a class="btn green sm" data-wa data-wa-message="Olá! Preciso de ajuda para encontrar um item no site.">'
+      + ico('whatsapp', 17) + 'Falar no WhatsApp</a></p>'
+      '</div>')
+
+
 FILES_BY_KEY = {
     'medicamentos': 'medicamentos-e-genericos.html',
     'beleza': 'beleza-e-cuidados.html',
@@ -843,48 +901,70 @@ FILES_BY_KEY = {
     'perfumaria': 'perfumaria.html',
 }
 
+SUB_HREF = dict((slug, href) for slug, _label, href in SUBCATS)
+MED_URL = public_url('medicamentos-e-genericos.html')
+
 
 def main():
+    SITEMAP.clear()
+    register('/', 1.0, 'weekly')  # home (index.html, mantida à mão)
+
     # Categorias ilustrativas (sem medicamentos — esses têm catálogo próprio)
     for key, title, script, desc, crumb in CATEGORY_PAGES:
         if key == 'medicamentos':
             continue
-        write(FILES_BY_KEY[key], shell(key, title, script, desc, crumb, category_body(key)))
+        name = FILES_BY_KEY[key]
+        emit(name, key, title, script, desc, crumb, category_body(key),
+             page_type='CollectionPage', priority=0.7)
 
     # Listagem geral e listagens por subcategoria (medicamentos reais)
-    write('medicamentos-e-genericos.html', shell(
-        'medicamentos', 'Medicamentos e Genéricos', 'Ouro Preto',
-        'Medicamentos reais com registro ativo na Anvisa. Vitrine informativa: preço e disponibilidade são confirmados na farmácia.',
-        'Medicamentos e Genéricos', medicine_listing_body('')))
+    emit('medicamentos-e-genericos.html', 'medicamentos', 'Medicamentos e Genéricos',
+         'Ouro Preto',
+         'Medicamentos reais com registro ativo na Anvisa. Vitrine informativa: preço e disponibilidade são confirmados na farmácia.',
+         'Medicamentos e Genéricos', medicine_listing_body(''),
+         page_type='CollectionPage', priority=0.9, changefreq='weekly')
     for slug, label, href in SUBCATS:
-        write(href, shell(
-            'medicamentos', label + ' — Medicamentos', 'Ouro Preto',
-            'Medicamentos de %s com registro ativo na Anvisa. Consulte disponibilidade e preço na farmácia.' % label,
-            'Medicamentos › ' + label, medicine_listing_body(slug)))
+        emit(href, 'medicamentos', label + ' — Medicamentos', 'Ouro Preto',
+             'Medicamentos de %s com registro ativo na Anvisa. Consulte disponibilidade e preço na farmácia.' % label,
+             'Medicamentos e Genéricos › ' + label, medicine_listing_body(slug),
+             page_type='CollectionPage', priority=0.8,
+             trail=[('Medicamentos e Genéricos', MED_URL),
+                    (label, public_url(href))])
 
     # Páginas de detalhe dos medicamentos
     for m in MEDICINES:
-        write('produto-%s.html' % m['slug'], shell(
-            'medicamentos', m['name'], 'Ouro Preto',
-            'Ficha informativa de %s (%s). Registro Anvisa %s. Vitrine informativa — sem venda online.' % (
-                m['name'], m['substance'], m['reg']),
-            'Medicamentos › %s › %s' % (SUB_LABEL[m['sub']], m['name']),
-            detail_body(m)))
+        name = 'produto-%s.html' % m['slug']
+        emit(name, 'medicamentos', m['name'], 'Ouro Preto',
+             'Ficha informativa de %s (%s). Registro Anvisa %s. Vitrine informativa — sem venda online.' % (
+                 m['name'], m['substance'], m['reg']),
+             'Medicamentos e Genéricos › %s › %s' % (SUB_LABEL[m['sub']], m['name']),
+             detail_body(m), page_type='ItemPage', priority=0.7,
+             trail=[('Medicamentos e Genéricos', MED_URL),
+                    (SUB_LABEL[m['sub']], public_url(SUB_HREF[m['sub']])),
+                    (m['name'], public_url(name))])
 
-    write('sobre.html', shell('sobre', 'Sobre a Farmácia', 'Ouro Preto',
-        'Informações sobre a Farma Popular Ouro Preto: endereço, horário informado, serviços e formas de pagamento.',
-        'Sobre a farmácia', sobre_body()))
-    write('contato.html', shell('contato', 'Contato e Localização', 'Ouro Preto',
-        'Telefone, endereço, Google Maps, redes sociais e horário informado da Farma Popular Ouro Preto.',
-        'Contato e localização', contato_body()))
-    write('dicas-de-saude.html', shell('dicas', 'Dicas de Saúde', 'Ouro Preto',
-        'Orientações gerais e informativas de organização e segurança. Não é recomendação de tratamento.',
-        'Dicas de Saúde', dicas_body()))
+    emit('sobre.html', 'sobre', 'Sobre a Farmácia', 'Ouro Preto',
+         'Informações sobre a Farma Popular Ouro Preto: endereço, horário informado, serviços e formas de pagamento.',
+         'Sobre a farmácia', sobre_body(), page_type='AboutPage', priority=0.6)
+    emit('contato.html', 'contato', 'Contato e Localização', 'Ouro Preto',
+         'Telefone, endereço, Google Maps, redes sociais e horário informado da Farma Popular Ouro Preto.',
+         'Contato e localização', contato_body(), page_type='ContactPage', priority=0.7)
+    emit('dicas-de-saude.html', 'dicas', 'Dicas de Saúde', 'Ouro Preto',
+         'Orientações gerais e informativas de organização e segurança. Não é recomendação de tratamento.',
+         'Dicas de Saúde', dicas_body(), priority=0.6)
 
-    # Páginas legais / obrigatórias (modelos ilustrativos)
-    for page in LEGAL_PAGES:
-        write(page['file'], shell('sobre', page['title'], page['script'],
-              page['desc'], page['crumb'], legal_body(page)))
+    # Páginas legais / obrigatórias: modelos ainda não revisados → noindex
+    for doc in LEGAL_PAGES:
+        emit(doc['file'], 'sobre', doc['title'], doc['script'], doc['desc'],
+             doc['crumb'], legal_body(doc), indexable=False,
+             priority=0.3, changefreq='yearly')
+
+    # Página 404 (Vercel serve dist/404.html automaticamente)
+    emit('404.html', 'inicio', 'Página não encontrada', 'Ops!',
+         'O endereço acessado não existe ou foi movido. Volte para a página inicial.',
+         'Página não encontrada', notfound_body(), indexable=False)
+
+    return SITEMAP
 
 
 if __name__ == '__main__':

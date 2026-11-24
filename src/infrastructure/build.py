@@ -34,6 +34,14 @@ def main():
         shutil.copytree(ROOT / "pages", DIST / "pages")
         pages += sum(1 for _ in (ROOT / "pages").rglob("*.html"))
 
+    # Arquivos de SEO e página 404 gerados pelo build_pages.py
+    for extra in ("404.html", "sitemap.xml", "robots.txt"):
+        src = ROOT / extra
+        if src.exists():
+            shutil.copy2(src, DIST / extra)
+    if (ROOT / "404.html").exists():
+        pages += 1
+
     shutil.copytree(ROOT / "assets", DIST / "assets")
 
     if (ROOT / "docs").exists():
@@ -46,7 +54,7 @@ def main():
 
     print("\n==> Build concluido em dist/")
     print("    %d paginas HTML" % pages)
-    print("    assets/, docs/ e documentacao Markdown inclusos")
+    print("    assets/, docs/, sitemap.xml e robots.txt inclusos")
     print("    Publicar dist/ na Vercel (vercel.json ja configurado).")
 
 

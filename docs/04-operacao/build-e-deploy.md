@@ -1,6 +1,10 @@
 # Publicação (Vercel)
 
-O projeto é um site **estático**: não há servidor, banco de dados ni variáveis
+**Projeto publicado em 24/11/2026:** https://farma-popular-ouro-preto.vercel.app
+(conta `wesleiuaauaa-6571`, repositório GitHub conectado, deploy automático a
+cada push em `main`).
+
+O projeto é um site **estático**: não há servidor, banco de dados nem variáveis
 de ambiente obrigatórias. Qualquer host estático serve o conteúdo.
 
 ## Build local
