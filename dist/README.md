@@ -152,6 +152,9 @@ Arquivos compartilhados:
 - `assets/js/site.js` — configuração do WhatsApp, menu e busca
 - `research_anvisa.py` — reproduz a consulta à base oficial da Anvisa usada no catálogo
 - `docs/fontes.md` — fontes, registros verificados e pendências de confirmação
+- `docs/AUDITORIA.md` — veredito de prontidão para build/publicação e evidências
+- `docs/DEPLOY.md` — passo a passo de build e deploy na Vercel
+- `docs/MAPA_DOCUMENTACAO.md` — índice que explica toda a documentação do projeto
 - `assets/produtos/*.webp` — 32 fotos reais (7 medicamentos + 5 vitrines × 5 itens)
 - `assets/produtos/*.svg` — ilustrações antigas mantidas apenas como referência
 
