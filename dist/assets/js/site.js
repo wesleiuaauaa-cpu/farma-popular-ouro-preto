@@ -125,11 +125,11 @@ window.va = window.va || function () {
   /* ══ Consentimento de cookies ══
      O Web Analytics da Vercel é opcional: o script só é injetado depois que
      o visitante aceita. A escolha fica em localStorage (fp_cookie_consent).
-     O caminho abaixo é o identificador do projeto na Vercel; não alterar
-     sem antes atualizar também a Política de Cookies. */
+     O caminho abaixo é a rota oficial do Web Analytics da Vercel; não
+     alterar sem antes atualizar também a Política de Cookies. */
   var COOKIE_KEY = 'fp_cookie_consent';
   var OPTIONAL_SCRIPTS = [
-    { src: '/zVf1u7xaTaWT5wfefSPvghK2q/script.js', id: 'vercel-analytics' }
+    { src: '/_vercel/insights/script.js', id: 'vercel-analytics' }
   ];
 
   function getConsent() {
