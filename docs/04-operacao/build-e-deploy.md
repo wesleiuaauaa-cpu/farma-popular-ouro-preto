@@ -7,6 +7,18 @@ cada push em `main`).
 O projeto é um site **estático**: não há servidor, banco de dados nem variáveis
 de ambiente obrigatórias. Qualquer host estático serve o conteúdo.
 
+## Contagem de visitas
+
+O **Vercel Web Analytics** foi habilitado em 25/11/2026 (plano Hobby, gratuito,
+50 mil eventos/mês, histórico de 1 mês). O script `/_vercel/insights/script.js`
+**só é injetado pelo `assets/js/site.js` depois que o visitante aceita** os
+cookies opcionais (`localStorage.fp_cookie_consent === 'accepted'`). Quem
+rejeita não dispara nenhuma requisição de analytics. Os números aparecem em
+**vercel.com → projeto → Analytics** (também consultáveis por
+`vercel metrics vercel.analytics.page_view.count`).
+
+Não é possível recuperar visitas anteriores à habilitação.
+
 ## Build local
 
 ```powershell

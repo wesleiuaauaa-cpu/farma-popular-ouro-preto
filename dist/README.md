@@ -46,6 +46,10 @@ Instruções completas em `docs/04-operacao/build-e-deploy.md`.
 O push para `main` dispara um novo deploy automático. Cada commit com `dist/`
 atualizado vira uma versão pública.
 
+A contagem de visitas usa o **Vercel Web Analytics** (gratuito no Hobby) e só é
+ativada após o visitante aceitar os cookies. Veja em
+`docs/04-operacao/build-e-deploy.md`.
+
 A página extra de **Dicas de Saúde** foi criada para dar destino real aos botões
 "Veja mais" e "Conheça nossas dicas" da home.
 
