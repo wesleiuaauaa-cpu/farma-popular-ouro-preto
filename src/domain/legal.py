@@ -36,8 +36,9 @@ LEGAL_PAGES = [
                     'Não solicitamos nome, CPF, e-mail ou dados de pagamento para navegar.'
                 ],
                 'ul': [
-                    'Dados de navegação: podem ser coletados por ferramentas de análise somente '
-                    'se você aceitar os cookies opcionais no aviso exibido no site.',
+                    'Dados de navegação: se você aceitar as opções de análise, o Vercel Web '
+                    'Analytics registra visitas e páginas vistas de forma agregada e anônima, '
+                    'sem cookies e sem identificar você entre dias ou sites diferentes.',
                     'Conversa pelo WhatsApp: ao clicar em um botão de consulta, você é direcionado '
                     'ao aplicativo WhatsApp, que é operado por terceiro. As mensagens que você '
                     'enviar ficam sob as regras daquele serviço e são tratadas pela farmácia apenas '
@@ -190,14 +191,20 @@ LEGAL_PAGES = [
             {
                 'h': '2. O que este site usa hoje',
                 'p': [
-                    'Atualmente, o site não carrega ferramentas de análise, publicidade ou rastreamento. '
-                    'A única tecnologia utilizada é o armazenamento local da sua preferência de '
-                    'cookies, para que o aviso não apareça novamente e para respeitar a sua escolha.'
+                    'O site usa o armazenamento local para lembrar sua preferência e evitar que o '
+                    'aviso apareça novamente. Se você aceitar, carregamos o Web Analytics da '
+                    'Vercel, que conta visitas e páginas vistas de forma agregada e anônima, sem '
+                    'cookies e sem identificar visitantes entre dias ou sites diferentes. Se você '
+                    'rejeitar, nenhuma ferramenta opcional é carregada.'
                 ],
                 'ul': [
-                    'Essenciais: a preferência de consentimento (aceitar ou rejeitar opcionais).',
-                    'Opcionais: nenhuma ferramenta opcional está ativa neste momento. Seeds para '
-                    'futuras ferramentas de análise ficam desativados até que você aceite.'
+                    'Essenciais: a preferência de consentimento (aceitar ou rejeitar opcionais), '
+                    'guardada no armazenamento local do navegador.',
+                    'Opcionais: Vercel Web Analytics — ativado somente após aceite; não usa '
+                    'cookies; os dados são anônimos e ficam disponíveis por 1 mês no painel da '
+                    'Vercel (plano Hobby).',
+                    'Não utilizamos cookies de publicidade, pixels de redes sociais nem '
+                    'rastreadores de terceiros.'
                 ]
             },
             {
@@ -212,9 +219,10 @@ LEGAL_PAGES = [
             {
                 'h': '4. Cookies de terceiros',
                 'p': [
-                    'Ao clicar em links externos (WhatsApp, Google Maps ou redes sociais), você pode '
-                    'receber cookies desses serviços, que possuem políticas próprias. O site não '
-                    'insere esses cookies automaticamente na sua visita.'
+                    'O script do Web Analytics é servido pela Vercel, mas não instala cookies no '
+                    'seu navegador. Ao clicar em links externos (WhatsApp, Google Maps ou redes '
+                    'sociais), você pode receber cookies desses serviços, que possuem políticas '
+                    'próprias. O site não insere esses cookies automaticamente na sua visita.'
                 ],
                 'ul': []
             },

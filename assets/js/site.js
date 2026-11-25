@@ -15,6 +15,12 @@ var SITE_CONFIG = {
   defaultMessage: 'Olá! Gostaria de informações sobre os produtos da Farma Popular Ouro Preto.'
 };
 
+/* Web Analytics da Vercel: fila de eventos exigida pelo script opcional.
+   O script externo só é injetado depois do aceite de cookies (ver abaixo). */
+window.va = window.va || function () {
+  (window.vaq = window.vaq || []).push(arguments);
+};
+
 (function () {
   'use strict';
 
@@ -116,12 +122,15 @@ var SITE_CONFIG = {
     if (empty) empty.hidden = visible !== 0;
   }
 
-  /* ══ Consentimento de cookies (estrutura pronta para uso futuro) ══
-     Hoje o site não carrega ferramentas opcionais. Quando analytics for
-     adicionado, coloque o script em OPTIONAL_SCRIPTS: ele só será injetado
-     depois que o visitante aceitar. A escolha fica em localStorage. */
+  /* ══ Consentimento de cookies ══
+     O Web Analytics da Vercel é opcional: o script só é injetado depois que
+     o visitante aceita. A escolha fica em localStorage (fp_cookie_consent).
+     O caminho abaixo é o identificador do projeto na Vercel; não alterar
+     sem antes atualizar também a Política de Cookies. */
   var COOKIE_KEY = 'fp_cookie_consent';
-  var OPTIONAL_SCRIPTS = [];
+  var OPTIONAL_SCRIPTS = [
+    { src: '/zVf1u7xaTaWT5wfefSPvghK2q/script.js', id: 'vercel-analytics' }
+  ];
 
   function getConsent() {
     try { return window.localStorage.getItem(COOKIE_KEY); }
